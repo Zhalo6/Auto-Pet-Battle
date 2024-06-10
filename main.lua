@@ -1,7 +1,7 @@
 local game_state = 'menu'
-local menus = { 'Play', 'How To Play', 'Quit' }
+local menus = { 'Play', 'Settings', 'Quit' }
 local selected_menu_item = 1
-local window_width
+local window_width 
 local window_height
 local font_height
 
@@ -14,6 +14,8 @@ local draw_game
 local game_keypressed
 
 function love.load()
+
+  love.window.setMode(1000, 700, {resizable=true, vsync=0, minwidth=400, minheight=300})
 
   -- get the width and height of the game window in order to center menu items
   window_width, window_height = love.graphics.getDimensions()
@@ -49,7 +51,24 @@ function love.draw()
 
 end
 
+function round_rectangle(x, y, width, height, radius)
+	--RECTANGLES
+	love.graphics.rectangle("fill", x + radius, y + radius, width - (radius * 2), height - radius * 2)
+	love.graphics.rectangle("fill", x + radius, y, width - (radius * 2), radius)
+	love.graphics.rectangle("fill", x + radius, y + height - radius, width - (radius * 2), radius)
+	love.graphics.rectangle("fill", x, y + radius, radius, height - (radius * 2))
+	love.graphics.rectangle("fill", x + (width - radius), y + radius, radius, height - (radius * 2))
+	
+	--ARCS
+	love.graphics.arc("fill", x + radius, y + radius, radius, math.rad(-180), math.rad(-90))
+	love.graphics.arc("fill", x + width - radius , y + radius, radius, math.rad(-90), math.rad(0))
+	love.graphics.arc("fill", x + radius, y + height - radius, radius, math.rad(-180), math.rad(-270))
+	love.graphics.arc("fill", x + width - radius , y + height - radius, radius, math.rad(0), math.rad(90))
+end
+
 function draw_menu()
+
+  love.graphics.setBackgroundColor(love.math.colorFromBytes(45,136,54))
 
   local horizontal_center = window_width / 2
   local vertical_center = window_height / 2
@@ -69,7 +88,7 @@ function draw_menu()
 
     -- currently selected menu item is yellow
     if i == selected_menu_item then
-      love.graphics.setColor(1, 1, 0, 1)
+        love.graphics.setColor(love.math.colorFromBytes(132,206,248))
 
     -- other menu items are white
     else
@@ -85,27 +104,39 @@ end
 
 function draw_settings()
 
-  love.graphics.printf(
-    "this is the 'settings' state, press Esc to go back to the 'menu' state",
-    0,
-    window_height / 2 - font_height / 2,
-    window_width,
-    'center')
+    love.graphics.printf(
+        "settings",
+        0,
+        window_height / 10,
+        window_width,
+        'center')
 
-  -- TODO: implement this function
+
+        love.graphics.rectangle("fill", window_width / 50, window_height / 4, 400,50)
+
+
+        love.graphics.rectangle("fill", window_width / 50, window_height / 3, 100,50)
+
+
+        love.graphics.rectangle("fill", 170,250, 100,50)
+
+
+        love.graphics.rectangle("fill", 320,250, 100,50)
+
+
+        love.graphics.rectangle("fill", window_width / 50, window_height / 2, 400,50)
+
+    
 
 end
 
 function draw_game()
+  love.graphics.setColor(love.math.colorFromBytes(210,212,94))
+  round_rectangle(75, 75, window_width / 3, 75, 10)
+  love.graphics.setColor(love.math.colorFromBytes(40,83,39,50))
+  round_rectangle(75, 225, window_width / 1.75, 75, 10)
+  round_rectangle(75, 325, window_width / 1.75, 75, 10)
 
-  love.graphics.printf(
-    "this is the 'game' state, press Esc to go back to the 'menu' state",
-    0,
-    window_height / 2 - font_height / 2,
-    window_width,
-    'center')
-
-  -- TODO: implement this function
 
 end
 
