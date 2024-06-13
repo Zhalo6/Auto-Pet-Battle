@@ -111,21 +111,29 @@ end
 
 function draw_settings()
 
-  love.graphics.printf(
-    "settings", 0, window_height / 20, window_width, 'center'
-  )
+    love.graphics.printf(
+        "settings",
+        0,
+        window_height / 10,
+        window_width,
+        'center')
 
-    love.graphics.setBackgroundColor(love.math.colorFromBytes(45,136,54))
+
+        love.graphics.rectangle("fill", window_width / 50, window_height / 4, 400,50)
+
+
+        love.graphics.rectangle("fill", window_width / 50, window_height / 3, 100,50)
+
+
+        love.graphics.rectangle("fill", 170,250, 100,50)
+
+
+        love.graphics.rectangle("fill", 320,250, 100,50)
+
+
+        love.graphics.rectangle("fill", window_width / 50, window_height / 2, 400,50)
+
     
-    love.graphics.push()
-    love.graphics.setColor(love.math.colorFromBytes(132,206,248))
-    round_rectangle(window_width / 15, window_height / 4 - 50, 450, 75, 10)
-    round_rectangle(window_width / 15, window_height / 2.15 - 50, 125, 75, 10)
-    round_rectangle(window_width / 15 + 160, window_height / 2.15 - 50, 125, 75, 10)
-    round_rectangle(window_width / 15 + 325, window_height / 2.15 - 50, 125, 75, 10)
-    round_rectangle(window_width / 15, window_height / 1.5 - 50, 450, 75, 10)
-    love.graphics.pop()
-
 
 end
 
@@ -133,24 +141,11 @@ function draw_game()
 
   love.graphics.push()
   love.graphics.setColor(love.math.colorFromBytes(210,212,94))
-  round_rectangle(50, 50, window_width / 6, 75, 10)
-  round_rectangle(255, 550, window_width / 7, 75, 10)
-  love.graphics.pop()
-
-  love.graphics.push()
+  round_rectangle(75, 75, window_width / 3, 75, 10)
   love.graphics.setColor(love.math.colorFromBytes(40,83,39,50))
-  round_rectangle(50, 200, window_width / 1.75, 75, 10)
-  round_rectangle(50, 300, window_width / 1.75, 75, 10)
-  round_rectangle(50, 450, window_width / 1.75, 75, 10)
-  round_rectangle(50, 550, window_width / 6, 75, 10)
-  love.graphics.pop()
+  round_rectangle(75, 225, window_width / 1.75, 75, 10)
+  round_rectangle(75, 325, window_width / 1.75, 75, 10)
 
-  love.graphics.push()
-  love.graphics.setColor(love.math.colorFromBytes(255, 255, 255, 255))
-  love.graphics.scale(0.5, 0.5)
-  love.graphics.draw(images[1], 115, 415)
-  love.graphics.draw(images[2], 365, 415)
-  love.graphics.pop()
 
 end
 
