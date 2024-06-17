@@ -93,7 +93,7 @@ function draw_menu()
   -- draw menu items
   for i = 1, #menus do
 
-    -- currently selected menu item is yellow
+    -- currently selected menu item is blue
     if i == selected_menu_item then
         love.graphics.setColor(love.math.colorFromBytes(132,206,248))
 
@@ -111,29 +111,38 @@ end
 
 function draw_settings()
 
-    love.graphics.printf(
-        "settings",
-        0,
-        window_height / 10,
-        window_width,
-        'center')
+  love.graphics.printf("Settings", 0, window_height / 10, window_width, 'center')
 
+  love.graphics.push("all")
+  love.graphics.setColor(love.math.colorFromBytes(132,206,248))
+  -- Audio
+  round_rectangle(window_width / 50, window_height / 4, 400, 50, 10)
 
-        love.graphics.rectangle("fill", window_width / 50, window_height / 4, 400,50)
+  -- Low
+  round_rectangle(window_width / 50, window_height / 2.75 + 30, 100, 50, 10)
+  -- Med
+  round_rectangle(window_width / 50 + 150, window_height / 2.75 + 30, 100, 50, 10)
+  -- High
+  round_rectangle(window_width / 50 + 300, window_height / 2.75 + 30, 100, 50, 10)
 
-
-        love.graphics.rectangle("fill", window_width / 50, window_height / 3, 100,50)
-
-
-        love.graphics.rectangle("fill", 170,250, 100,50)
-
-
-        love.graphics.rectangle("fill", 320,250, 100,50)
-
-
-        love.graphics.rectangle("fill", window_width / 50, window_height / 2, 400,50)
-
-    
+  -- Graphics
+  round_rectangle(window_width / 50, window_height / 2 + 50, 400, 50, 10)
+  love.graphics.pop()
+  -- Labels
+  love.graphics.push("all")
+  love.graphics.setColor(0, 0, 0)
+  love.graphics.printf("LOW", window_width / 49, window_height / 2.75 + 39, 100,"center")
+  love.graphics.printf("MED", window_width / 49 + 150, window_height / 2.75 + 39, 100,"center")
+  love.graphics.printf("HIGH", window_width / 49 + 300, window_height / 2.75 + 39, 100,"center")
+  love.graphics.printf("1920 x 1080", window_width / 49 + 80, window_height / 2 + 59, 250,"center")
+  love.graphics.pop()
+  -- Titles
+  love.graphics.push("all")
+  love.graphics.setColor(255, 255, 255)
+  love.graphics.printf("SOUND", window_width / 49 + 100, window_height / 5.5, 200,"center")
+  love.graphics.printf("QUALITY", window_width / 49 + 100, window_height / 2.95, 200,"center")
+  love.graphics.printf("SCREEN SIZE", window_width / 49 + 100, window_height / 2, 200,"center")
+  love.graphics.pop()
 
 end
 
@@ -142,10 +151,35 @@ function draw_game()
   love.graphics.push()
   love.graphics.setColor(love.math.colorFromBytes(210,212,94))
   round_rectangle(75, 75, window_width / 3, 75, 10)
-  love.graphics.setColor(love.math.colorFromBytes(40,83,39,50))
-  round_rectangle(75, 225, window_width / 1.75, 75, 10)
-  round_rectangle(75, 325, window_width / 1.75, 75, 10)
+  love.graphics.pop()
 
+  love.graphics.push()
+  love.graphics.setColor(love.math.colorFromBytes(40,83,39,50))
+  -- Attack Row 1
+  round_rectangle(75, 225, window_width / 1.75, 75, 10)
+  -- Attack Row 2
+  round_rectangle(75, 325, window_width / 1.75, 75, 10)
+  -- Pet Row
+  round_rectangle(75, 500, window_width / 1.75, 75, 10)
+  --Level Up 
+  round_rectangle(75, 600, window_width / 7, 75, 10)
+  love.graphics.pop()
+  -- Level Up Bar
+  love.graphics.push()
+  love.graphics.setColor(love.math.colorFromBytes(210, 212, 94))
+  round_rectangle(235, 600, window_width / 8, 75, 10)
+  love.graphics.pop()
+  -- Roll
+  love.graphics.push()
+  love.graphics.setColor(love.math.colorFromBytes(42, 151, 175))
+  round_rectangle(377, 600, window_width / 8, 75, 10)
+  love.graphics.pop()
+  -- Freeze
+
+  love.graphics.push()
+  love.graphics.setColor(love.math.colorFromBytes(164, 222, 235))
+  round_rectangle(520, 600, window_width / 8, 75, 10)
+  love.graphics.pop()
 
 end
 
